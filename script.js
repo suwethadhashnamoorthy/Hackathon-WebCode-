@@ -23,14 +23,18 @@ async function bookdetails() {
     var date = bookdata.released;
     var date1 = new Date(date).toDateString();
     var ele = document.getElementById("number1");
-    ele.innerHTML = `<p><span> Name of Book: </span> ${bookdata.name}</p>
+    
+    // Displaying the fields
+    ele.innerHTML = 
+      `<p><span> Name of Book: </span> ${bookdata.name}</p>
             <p><span> ISBN: </span> ${bookdata.isbn} </p>
             <p><span> Number of Pages: </span> ${bookdata.numberOfPages} </p>
             <p><span> Authors Name: </span> ${bookdata.authors}</p>
             <p><span> Publishers Name: </span> ${bookdata.publisher} </p>
             <p><span> Released Date: </span> ${date1} </p>
             <p><span> Character Names </span> </p>`;
-
+    
+    // fetching the details
     for (var i = 0; i < 5; i++) {
       let chardata = await fetch(bookdata.characters[i]);
       let char = await chardata.json();
